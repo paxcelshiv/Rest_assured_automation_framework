@@ -10,24 +10,29 @@ resources:
   repositories:
     - repository: Rest_assured_automation_framework
       type: github
-      endpoint:paxcelshiv 
-      name: Rest_assured_automation_framework
+      endpoint: paxcelshiv
       ref: refs/heads/main
-pool:
-  vmImage: windows-latest
+      name: paxcelshiv/Rest_assured_automation_framework
+      
+jobs:
+  - job: API Automation framework
+    pool:
+      vmImage: windows-latest
+    steps:
+      - checkout: Rest_assured_automation_framework
+      - script: mvn clean install
+          echo Starting the build
+          mvn package
+        displayName: 'Build with maven'
+      - task: Maven@3
+        inputs:
+          mavenPomFile: 'pom.xml'
+          mavenOptions: '-Xmx3072m'
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.8'
+          jdkArchitectureOption: 'x64'
+          publishJUnitResults: true
+          testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          goals: 'package'
 
-steps:
-- script: 
-    echo Starting the build
-    mvn package
-  displayName: 'Build with maven'
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+      
