@@ -6,6 +6,14 @@
 trigger:
 - main
 
+resources:
+  repositories:
+    - repository: Rest_assured_automation_framework
+      type: github
+      endpoint: 
+      name: paxcelshiv/Rest_assured_automation_framework
+      ref: refs/heads/main
+
 pool:
   vmImage: windows-latest
 
