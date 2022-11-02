@@ -7,9 +7,13 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
+- script: 
+    echo Starting the build
+    mvn package
+  displayName: 'Build with maven'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
