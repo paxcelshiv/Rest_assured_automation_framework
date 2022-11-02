@@ -15,7 +15,7 @@ resources:
       name: paxcelshiv/Rest_assured_automation_framework
       
 jobs:
-  - job: API Automation framework
+  - job: APIAutomationframework
     pool:
       vmImage: windows-latest
     steps:
