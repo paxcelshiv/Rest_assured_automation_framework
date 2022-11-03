@@ -24,7 +24,7 @@ jobs:
           echo Starting the build
           mvn package
         displayName: 'Build with maven'
-      - task: CmdLine
+      - task: CmdLine@1
         inputs:
           mavenPomFile: 'pom.xml'
           mavenOptions: '-Xmx3072m'
