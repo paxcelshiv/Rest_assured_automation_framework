@@ -6,6 +6,14 @@
 trigger:
 - main
 
+resources:
+  repositories:
+    - repository: Rest_assured_automation_framework
+      type: github
+      endpoint: paxcelshiv
+      ref: refs/heads/main
+      name: paxcelshiv/Rest_assured_automation_framework
+
 pool:
   vmImage: ubuntu-latest
 
